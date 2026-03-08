@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>طالب العلاج الوظيفي</title>
+  <title>لوحة طالب العلاج الوظيفي</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -838,7 +838,7 @@ body.dark-mode .cal-day:hover{background:rgba(0,200,83,0.08);}
 <!-- INFO BAR -->
 <div class="just-infobar">
   <div class="just-infobar-right" style="display:flex;align-items:center;gap:8px;">
-    هلا بيك <strong>طالب العلاج الوظيفي</strong> &nbsp;·&nbsp; <span id="welcomeYearLabel" style="font-weight:700;color:var(--teal);"></span>
+    مرحبا بك <strong>طالب العلاج الوظيفي</strong> &nbsp;·&nbsp; <span id="welcomeYearLabel" style="font-weight:700;color:var(--teal);"></span>
   </div>
   <div class="just-infobar-left">
     <span id="bc" style="display:none;">
@@ -3698,7 +3698,7 @@ const BIN_URL=`https://api.jsonbin.io/v3/b/${_d(_BI)}`;
 
 // ===== CONFIG من GitHub =====
 // ← غيّر هذا الرابط بعد رفع config.json على GitHub
-const CONFIG_URL = 'https://raw.githubusercontent.com/mrahmadjafferjordan-lab/ot-dashboard/main/config.json';
+const CONFIG_URL = 'https://raw.githubusercontent.com/mrahmadjafferjordan-lab/ot-dashboard/refs/heads/main/config.json';
 let CFG = null; // يُحمَّل عند بدء التشغيل
 
 function loadConfig(){
@@ -4072,15 +4072,15 @@ function loadNotifs(){
 
 function renderNotifList(notifs){
   window._cachedNotifs = notifs; // cache للـ badge
-  // تحديث seenNotifs
+  const list = document.getElementById('notifList');
+  const ICONS={high:'🔴',med:'🟡',low:'🟢'};
+  const LABELS={high:'عاجل',med:'متوسط',low:'عادي'};
+  // تحديث seenNotifs فقط عند فتح صفحة الإشعارات
   if(!D.seenNotifs) D.seenNotifs=[];
   notifs.forEach(n=>{ const id=n.id||n.title; if(!D.seenNotifs.includes(id)) D.seenNotifs.push(id); });
   save();
   const badge=document.getElementById('bellBadge');
-  if(badge) badge.style.display='none'; // مقروءة بمجرد الفتح
-  const list = document.getElementById('notifList');
-  const ICONS={high:'🔴',med:'🟡',low:'🟢'};
-  const LABELS={high:'عاجل',med:'متوسط',low:'عادي'};
+  if(badge) badge.style.display='none';
   if(!notifs.length){
     list.innerHTML=`<div class="notif-empty"><div class="ne-icon">🔔</div><div>لا توجد إشعارات حالياً</div></div>`;
     return;
