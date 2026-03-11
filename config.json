@@ -6,7 +6,10 @@
     "title": "داشبورد طالب العلاج الوظيفي",
     "university": "جامعة التكنو ",
     "department": "قسم العلاج الوظيفي",
-    "welcomeText": "طالب العلاج الوظيفي"
+    "welcomeText": "طالب العلاج الوظيفي"   
+    "university": "اسم جامعتك هنا",
+  "welcomeText": "طالب العلاج الوظيفي"
+}
   },
 
   "announcements": [
